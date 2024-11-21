@@ -1,14 +1,18 @@
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
+import Register from "./components/Register";
+import Login from "./components/Login";
 
 const App = () => {
   return (
-    <div className="container-fluid p-0">
+    <>
       <Navbar />
-      <Home />
+      {/*<Home/>*/}
+      <Register />
+      <Login />
       <Footer />
-    </div>
+    </>
   );
 };
 

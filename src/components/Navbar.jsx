@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Style.css";
 
 const Navbar = () => {
@@ -9,22 +10,33 @@ const Navbar = () => {
       <a className="navbar-brand" href="#">
         🍕 Pizzería Mamma Mía
       </a>
+      <Link to="/profile" className="btn btn-outline-light mx-1">
+        Profile
+      </Link>
       <div className="ms-auto d-flex align-items-center">
-        <button className="btn btn-outline-light mx-1">🍕 Home</button>
+        <Link to="/" className="btn btn-outline-light mx-1">
+          🍕 Home
+        </Link>
         {token ? (
           <>
-            <button className="btn btn-outline-light mx-1">🔓 Profile</button>
+            <Link to="/profile" className="btn btn-outline-light mx-1">
+              🔓 Profile
+            </Link>
             <button className="btn btn-outline-danger mx-1">🔒 Logout</button>
           </>
         ) : (
           <>
-            <button className="btn btn-outline-success mx-1">🔐 Login</button>
-            <button className="btn btn-outline-info mx-1">🔐 Register</button>
+            <Link to="/login" className="btn btn-outline-success mx-1">
+              🔐 Login
+            </Link>
+            <Link to="/register" className="btn btn-outline-info mx-1">
+              🔐 Register
+            </Link>
           </>
         )}
-        <button className="btn btn-warning mx-1">
+        <Link to="/cart" className="btn btn-warning mx-1">
           🛒 Total: ${total.toLocaleString()}
-        </button>
+        </Link>
       </div>
     </nav>
   );

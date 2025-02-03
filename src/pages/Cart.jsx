@@ -1,11 +1,13 @@
 import React, { useContext, useState } from "react";
-import { pizzaCart } from "../data/pizzas";
+
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { CartContext } from "../context/CartContext";
+import { UserContext } from "../context/UserContext";
 
 const Cart = () => {
   const { pizzaCount, setPizzaCount } = useContext(CartContext);
   const { totalCart, setTotalCart } = useContext(CartContext);
+  const { token } = useContext(UserContext);
 
   function decrementCount(index) {
     if (pizzaCount[index].count > 1) {
@@ -49,7 +51,7 @@ const Cart = () => {
                 </div>
                 <div></div>
                 <div className="d-flex align-items-center">
-                  <p className="pe-3">${item.price.toLocaleString()}</p>
+                  <p className="pe-3">${item.price}</p>
                   <Button
                     variant="outline-danger"
                     onClick={() => decrementCount(index)}
@@ -69,13 +71,18 @@ const Cart = () => {
           })}
         </Row>
 
-        <div>
-          <Button className="btn btn-warning mx-1">
-            🛒 Total: ${totalCart.toLocaleString()}
+        <div className="d-flex justify-content-center">
+          <Button
+            disabled={!token}
+            variant="dark"
+            className={
+              token ? "bg-primary" : "text-secondary cursor-not-allowed"
+            }
+          >
+            Pagar
           </Button>
         </div>
         <br />
-        <Button variant="dark">Pagar</Button>
       </Container>
     </div>
   );
